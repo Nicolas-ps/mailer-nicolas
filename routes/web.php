@@ -18,12 +18,14 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/mailer', [MailController::class, 'index'])->name('index');
-Route::post('/sendEMail', [MailController::class, 'dispair'])->name('sendEmail');
+    Route::get('/dashboard', function (){
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::post('/sendEMail', [MailController::class, 'dispair'])->name('sendEmail');
+});
 
 
 require __DIR__.'/auth.php';

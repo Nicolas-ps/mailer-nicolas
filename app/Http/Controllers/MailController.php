@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class MailController extends Controller
 {
-    public function index ()
-    {
-        return view('form');
-    }
+
 
     public function dispair (DispairRequest $request)
     {
@@ -21,11 +18,11 @@ class MailController extends Controller
         $nameFile =  $file->getClientOriginalName();
         $file->storeAs('./',$nameFile);
 
-        Mail::send(new AppMail);
+        //Mail::send(new AppMail);
 
         Storage::delete($nameFile);
         
-        return redirect()->route('index')->with('statusSend', 'E-mail enviado com sucesso!');
+        return redirect()->route('dashboard')->with('statusSend', 'E-mail enviado com sucesso!');
     }
 
 }
