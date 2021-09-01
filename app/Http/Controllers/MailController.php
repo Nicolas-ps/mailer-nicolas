@@ -18,7 +18,7 @@ class MailController extends Controller
         $nameFile =  $file->getClientOriginalName();
         $file->storeAs('./',$nameFile);
 
-        //Mail::send(new AppMail);
+        Mail::send(new AppMail);
 
         Storage::delete($nameFile);
         
