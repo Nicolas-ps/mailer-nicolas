@@ -30,23 +30,25 @@ class AppMail extends Mailable
      */
     public function build(Request $request)
     {
-        $nameFile = $request->file('file-upload')->getClientOriginalName();
-        $path = storage_path()."/public";
+        if ($request->file('file-upload')) {
+            $nameFile = $request->file('file-upload')->getClientOriginalName();
+        }
 
-        $year = $request->year;
-        $month = $request->month;
-
-        $subject = $request->name . " - Relatório de " . $month . " de " . $year . ".";
+        $subject = $request->email_subject;
 
         $this->subject($subject);
         $this->to($request->email_destinate, $request->name);
 
-        $this->markdown('mail.mail', [
+        $email = $this->markdown('mail.mail', [
             'name' => $request->name,
             'email_destinate' => $request->email_destinate,
-            'year' => $year,
-            'month' => $month
-        ])->attachFromStorage($nameFile);
+            'email_subject' => $request->email_subject,
+            'email_body' => $request->email_body
+        ]);
+
+        if($request->file('file-upload')){
+            $email->attachFromStorage($nameFile);
+        }
 
     }
 }

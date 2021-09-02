@@ -10,19 +10,20 @@ use Illuminate\Support\Facades\Storage;
 
 class MailController extends Controller
 {
-
-
     public function dispair (DispairRequest $request)
     {
-        $file = $request->file('file-upload');
-        $nameFile =  $file->getClientOriginalName();
-        $file->storeAs('./',$nameFile);
+        if($request->file('file-upload')){
+            $file = $request->file('file-upload');
+            $nameFile =  $file->getClientOriginalName();
+            $file->storeAs('./', $nameFile);
+        }
 
         Mail::send(new AppMail);
 
-        Storage::delete($nameFile);
+        
+        //Storage::delete($nameFile);
+        
         
         return redirect()->route('dashboard')->with('statusSend', 'E-mail enviado com sucesso!');
     }
-
 }

@@ -24,21 +24,17 @@ class DispairRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email_destinate' => 'required|email',
-            'month' => 'required',
-            'year' => 'required',
-            'file-upload' => ['required', 'file']
+            'email_destinate' => ['required', 'email'],
+            'file-upload' => ['file']
         ];
     }
 
     public function messages ()
     {
         return [
-            'name.required' => 'Não se esqueça do nome do destinatário',
             'email_destinate.required' => 'Não se esqueça do email do destinatário',
             'email_destinate.filter' => 'O email não é válido',
-            'file-upload.required' => 'Não se esqueça do arquivo anexo',
+            'file-upload.file' => 'O arquivo anexado não é um arquivo válido!',
         ];
     }
 

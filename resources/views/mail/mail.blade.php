@@ -1,6 +1,6 @@
 @component('mail::message')
 
-<h1>{{ $month }} de {{ $year }}</h1>
-<p>Disparando e-mails utilizando o cliente SMTP Gmail. Com limite diário de no máximo 100 emails.</p>
+<h1>{{ $email_subject }}</h1>
+<p>{{ $email_body }}</p>
 
 @endcomponent

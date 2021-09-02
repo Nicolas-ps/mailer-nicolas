@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="bg-gray-200 py-12">
+    <div class="bg-gray-300 py-12">
         <div class="w-3/5 mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-2xl sm:rounded-lg">
                 <div class="">
@@ -24,10 +24,10 @@
                                 <div class="">
                                     <div class="">
                                         <label for="name" class="block text-sm font-medium text-gray-700">
-                                            Nome
+                                            Nome do destinatário
                                         </label>
                                         <div class="mt-1 flex flex-col rounded-md shadow-sm">
-                                            <input type="text" name="name" id="name" class="py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="Fulano de tal">
+                                            <input type="text" name="name" id="name" class="py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded rounded-r-md sm:text-sm border-gray-300" placeholder="Fulano de tal">
                                         </div>
                                         @error('name') <span class="mt-3 text-sm text-red-500">{{ $errors->first('name') }}</span> @enderror
 
@@ -40,39 +40,34 @@
                                             Destinatário
                                         </label>
                                         <div class="mt-1 flex flex-col rounded-md shadow-sm">
-                                            <input type="email" name="email_destinate" id="email_destinate" class="py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="fulanodetal@gmail.com">
+                                            <input type="email" name="email_destinate" id="email_destinate" class="py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded rounded-r-md sm:text-sm border-gray-300" placeholder="fulanodetal@gmail.com">
                                         </div>
                                     </div>
                                     @error('email_destinate') <span class="mt-3 text-sm text-red-500">{{ $errors->first('email_destinate') }}</span> @enderror
                                 </div>
 
                                 <div class="">
-                                    <label for="month" class="block text-sm font-medium text-gray-700">Mês</label>
-                                    <select id="month" name="month" autocomplete="Mês" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        <option>Escolha o mês</option>
-                                        <option value="Janeiro">Janeiro</option>
-                                        <option value="Fevereiro">Fevereiro</option>
-                                        <option value="Março">Março</option>
-                                        <option value="Abril">Abril</option>
-                                        <option value="Maio">Maio</option>
-                                        <option value="Junho">Junho</option>
-                                        <option value="Julho">Julho</option>
-                                        <option value="Agosto">Agosto</option>
-                                        <option value="Setembro">Setembro</option>
-                                        <option value="Outubro">Outubro</option>
-                                        <option value="Novembro">Novembro</option>
-                                        <option value="Dezembro">Dezembro</option>
-                                    </select>
-                                    @error('month') <span class="text-sm text-red-300">{{ $errors->first('month') }}</span> @enderror
+                                    <div class="">
+                                        <label for="email_subject" class="block text-sm font-medium text-gray-700">
+                                            Assunto
+                                        </label>
+                                        <div class="mt-1 flex flex-col rounded-md shadow-sm">
+                                            <input type="text" name="email_subject" id="email_subject" class="py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded rounded-r-md sm:text-sm border-gray-300" placeholder="Digite aqui o assunto">
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="">
-                                    <label for="year" class="block text-sm font-medium text-gray-700">Ano</label>
-                                    <select id="year" name="year" autocomplete="Ano" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        @for($i = 2021; $i <= 2030; $i++) <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                    </select>
-                                    @error('year') <span class="text-sm text-red-300">{{ $errors->first('year') }}</span> @enderror
+                                    <div class="h-40">
+                                        <label for="email_body" class="block text-sm font-medium text-gray-700">
+                                            Texto do corpo
+                                        </label>
+                                        <div class="h-full mt-1 flex flex-col rounded-md shadow-sm">
+                                            <textarea name="email_body" id="email_body" class="mb-3 h-40 py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded rounded-r-md sm:text-sm border-gray-300">
+
+                                            </textarea>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div>
@@ -114,5 +109,5 @@
             </div>
         </div>
     </div>
-    
+
 </x-app-layout>
